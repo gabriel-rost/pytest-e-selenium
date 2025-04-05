@@ -19,3 +19,7 @@ docker-compose up --build
 ```
 docker-compose down
 ```
+### 📝 Logs dos Testes
+Durante a execução dos testes via Docker, dois tipos de logs são gerados automaticamente no diretório logs/ do projeto:
+* 📄 Log em Texto (.log)
+* 🌐 Relatório em HTML (report.html)
