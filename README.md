@@ -23,3 +23,22 @@ docker-compose down
 Durante a execução dos testes via Docker, dois tipos de logs são gerados automaticamente no diretório logs/ do projeto:
 * 📄 Log em Texto (.log)
 * 🌐 Relatório em HTML (report.html)
+
+## 🖥 Como Rodar Os Testes Localmente
+### 1. Instalação do Python
+Pode ser checado com o seguinte comando:
+```
+python --version
+```
+### 2. Instalação Das Dependências
+```
+pip install pytest
+```
+```
+pip install selenium
+```
+### 3. Rodando Os Testes
+Dentro do diretório do projeto digitar o seguinte comando:
+```
+pytest
+```
