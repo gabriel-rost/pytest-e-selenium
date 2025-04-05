@@ -1,15 +1,27 @@
 version: '3'
+
 services:
   selenium-tests:
+    container_name: selenium-pytest-runner
     build: .
     volumes:
-      - .:/app  # Mapeia o diretório local para o diretório do container
+      - .:/app              # Mapeia o diretório local para o container
+      - ./logs:/app/logs    # Diretório para armazenar logs
     environment:
-      - DISPLAY=:99  # Variável de ambiente necessária se você for rodar testes com navegador
+      - DISPLAY=:99
     networks:
       - selenium-network
     stdin_open: true
     tty: true
+    working_dir: /app
+    command: >
+      /bin/sh -c '
+        mkdir -p logs &&
+        NOW=$(date +"%Y-%m-%d_%H-%M-%S") &&
+        xvfb-run pytest --maxfail=1 --disable-warnings -v \
+        --html=logs/report.html --self-contained-html \
+        | tee logs/pytest_$NOW.log
+      '
 
 networks:
   selenium-network:
