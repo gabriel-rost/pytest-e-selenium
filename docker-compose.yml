@@ -1,0 +1,16 @@
+version: '3'
+services:
+  selenium-tests:
+    build: .
+    volumes:
+      - .:/app  # Mapeia o diretório local para o diretório do container
+    environment:
+      - DISPLAY=:99  # Variável de ambiente necessária se você for rodar testes com navegador
+    networks:
+      - selenium-network
+    stdin_open: true
+    tty: true
+
+networks:
+  selenium-network:
+    driver: bridge
